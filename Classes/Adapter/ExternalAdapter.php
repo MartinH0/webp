@@ -28,7 +28,7 @@ class ExternalAdapter implements AdapterInterface
     public function __construct(string $parameters)
     {
         if (substr_count($parameters, '%s') !== 2) {
-            throw new InvalidArgumentException('Command string is invalid, supply 2 string placeholders!');
+            throw new InvalidArgumentException('Command string is invalid, supply 2 string (%s) placeholders!');
         }
         $binary = explode(' ', $parameters)[0];
         if (!is_executable($binary)) {
@@ -41,7 +41,7 @@ class ExternalAdapter implements AdapterInterface
     /**
      * @inheritdoc
      */
-    public function convert(string $originalFilePath, string $targetFilePath)
+    public function convert(string $originalFilePath, string $targetFilePath): void
     {
         $command = escapeshellcmd(sprintf($this->parameters, $originalFilePath, $targetFilePath));
         CommandUtility::exec($command);

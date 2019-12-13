@@ -30,7 +30,7 @@ class MagickAdapter implements AdapterInterface
     /**
      * @inheritdoc
      */
-    public function convert(string $originalFilePath, string $targetFilePath)
+    public function convert(string $originalFilePath, string $targetFilePath): void
     {
         $this->getGraphicalFunctionsObject()->imageMagickExec(
             $originalFilePath,
@@ -39,7 +39,7 @@ class MagickAdapter implements AdapterInterface
         );
 
         if (!@is_file($targetFilePath)) {
-            throw new \RuntimeException(sprintf('File %s could not be created!', $targetFilePath));
+            throw new \RuntimeException(sprintf('File "%s" could not be created!', $targetFilePath));
         }
     }
 
@@ -53,8 +53,6 @@ class MagickAdapter implements AdapterInterface
         if ($graphicalFunctionsObject === null) {
             /** @var GraphicalFunctions $graphicalFunctionsObject */
             $graphicalFunctionsObject = GeneralUtility::makeInstance(GraphicalFunctions::class);
-            // @todo remove (TYPO3 CMS 9.5)
-            $graphicalFunctionsObject->init();
         }
 
         return $graphicalFunctionsObject;

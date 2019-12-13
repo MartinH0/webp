@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace Plan2net\Webp\Service;
 
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class Configuration
@@ -19,16 +21,16 @@ class Configuration implements SingletonInterface
     protected static $configuration = [];
 
     /**
-     * Returns the whole extension configuration or a specific property
+     * Returns the whole extension configuration or a specific key
      *
      * @param string|null $key
      * @return array|string|null
      */
-    public static function get($key = null)
+    public static function get(?string $key = null)
     {
-        if (empty(self::$configuration) && isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['webp'])) {
-            self::$configuration = (array)unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['webp'], [false]);
-        }
+        try {
+            self::$configuration = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('webp');
+        } catch (\Exception $e) {}
 
         if (!empty($key)) {
             if (isset(self::$configuration[$key])) {

@@ -25,5 +25,5 @@ interface AdapterInterface
      * @param string $targetFilePath
      * @throws RuntimeException
      */
-    public function convert(string $originalFilePath, string $targetFilePath);
+    public function convert(string $originalFilePath, string $targetFilePath): void;
 }

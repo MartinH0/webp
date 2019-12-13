@@ -1,4 +1,4 @@
-# WebP for TYPO3 CMS LTS 8 and 9
+# WebP for TYPO3 CMS 9
 
 Adds an automagically created _WebP_ copy for every processed jpg/jpeg/png image in the format
 
@@ -81,7 +81,7 @@ Since version `1.1.0` all images in every local and writable storage will be sav
 
 # Webserver example configuration
 
-Please adapt the following to _your specific needs_, this is only an example configuration.
+Please **adapt** the following to _your specific needs_, this is **only an example** configuration.
 
 ## nginx
 
@@ -125,20 +125,13 @@ Make sure that there are no other rules that already apply to the specified imag
 
 # Removing processed files
 
-You can remove the created .webp files at any time within the TYPO3 CMS backend.
-
-## TYPO3 CMS LTS 8.7
-
-* Go to System > Install > Clean up
-* Click the _Clear processed files_ button
-
-## TYPO3 CMS LTS 9.5
+You can remove the created .webp files at any time within the TYPO3 CMS backend:
 
 * Go to Admin Tools > Remove Temporary Assets
 * Click the _Scan temporary files_ button
 * In the modal click the button with the path of the storage
 
-Although the button names only the path of the \_processed\_ folder, all processed files of the storage are actually deleted!
+Although the button names only the path of the `_processed_` folder, all processed files of the storage are actually deleted!
 
 # Alternatives
 
@@ -151,11 +144,11 @@ but that requires more knowledge to set up.
 
 # Drawbacks to keep in mind
 
-Note that this extension produces an additional load on your server (each processed image is reprocessed) and possibly creates a lot of additional files that consume disk space (size varies depending on your ImageMagick/GraphicsMagick configuration).
+Note that this extension produces an additional load on your server (each processed image is reprocessed) and possibly creates a lot of additional files that consume disk space (size varies depending on your! configuration).
 
 # Inspiration
 
-This extension was inspired by Angela Dudtkowski's _cs_webp_ extension that has some flaws and got no update since early 2017. Thanks Angela :-) 
+This extension was inspired by [Angela Dudtkowski](https://www.clickstorm.de/agentur/)'s _cs_webp_ extension that has some flaws and got no update since early 2017. Thanks Angela :-) 
 
 # Changelog
 
@@ -163,3 +156,11 @@ This extension was inspired by Angela Dudtkowski's _cs_webp_ extension that has 
 | ------------- |-------------
 | 1.1.0         | Convert all images in every local and writable storage<br>Fix fallback options for conversion<br>Update README
 | 1.2.0         | Add options for different conversion parameters per image mimetype
+| 2.0.0         | Drop support for TYPO3 8 and PHP < 7.2
+
+
+# Spread some love
+
+Send us a postcard from your favourite place and tell us how much you love TYPO3 and OpenSource:
+> plan2net GmbH, Sieveringerstraße 37, 1190 Vienna, Austria
+
